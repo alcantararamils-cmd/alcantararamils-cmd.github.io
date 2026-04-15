@@ -92,6 +92,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     position: relative;
     overflow: hidden;
     padding-top: 0;
@@ -100,7 +102,7 @@
     position: absolute;
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(80px, 18vw, 240px);
-    color: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.04);
     letter-spacing: 10px;
     top: 50%;
     left: 50%;
@@ -108,8 +110,16 @@
     user-select: none;
     pointer-events: none;
     white-space: nowrap;
+    transition: transform 0.1s ease-out, color 0.3s;
+    will-change: transform;
   }
-  .hero-content { position: relative; z-index: 1; }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
     font-size: 0.75rem;
@@ -123,21 +133,14 @@
     font-size: clamp(52px, 9vw, 120px);
     line-height: 0.92;
     letter-spacing: 2px;
-    color: var(--white);
-    transition: letter-spacing 0.4s ease, color 0.3s;
   }
-  .hero-title:hover { letter-spacing: 8px; color: var(--red); }
-  .hero-title .outline {
-    -webkit-text-stroke: 1px var(--white);
-    color: transparent;
-    transition: -webkit-text-stroke 0.3s, color 0.3s;
-  }
-  .hero-title:hover .outline { -webkit-text-stroke: 1px var(--red); }
+  .hero-title .word-white { color: var(--white); }
+  .hero-title .word-red { color: var(--red); }
   .hero-sub {
     margin-top: 2rem;
     font-size: 1rem;
     color: var(--muted);
-    max-width: 480px;
+    max-width: 520px;
     line-height: 1.7;
   }
   .hero-cta {
@@ -145,6 +148,7 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
   .btn {
     display: inline-flex;
@@ -168,7 +172,8 @@
   .scroll-indicator {
     position: absolute;
     bottom: 2rem;
-    left: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -177,6 +182,7 @@
     letter-spacing: 3px;
     color: var(--muted);
     text-transform: uppercase;
+    white-space: nowrap;
   }
   .scroll-line { width: 40px; height: 1px; background: var(--muted); position: relative; overflow: hidden; }
   .scroll-line::after {
@@ -543,13 +549,13 @@
 
 <!-- HOME -->
 <section id="home">
-  <div class="hero-bg-word">MANAGER</div>
+  <div class="hero-bg-word" id="hero-bg-word">MANAGER</div>
   <div class="hero-content">
     <p class="hero-eyebrow">YouTube Channel Manager &nbsp;&#x2022;&nbsp; Automation Specialist</p>
     <h1 class="hero-title">
-      Creative<br>
-      <span class="outline">Channel</span><br>
-      Manager
+      <span class="word-white">Creative</span><br>
+      <span class="word-red">Channel</span><br>
+      <span class="word-white">Manager</span>
     </h1>
     <p class="hero-sub">I don't just upload videos — I engineer growth systems. Bridging creative content with backend automation using Google Apps Script, AI, and data-driven SEO.</p>
     <div class="hero-cta">
@@ -569,9 +575,7 @@
     <div class="about-avatar">
       <div class="avatar-ring"></div>
       <div class="avatar-ring2"></div>
-      <div class="about-avatar-inner">
-  <img src="profile.jpg" alt="Ramil S. Alcantara">
-</div>
+      <div class="about-avatar-inner">RSA</div>
     </div>
     <div class="available-badge">
       <div class="available-dot"></div>
@@ -872,6 +876,34 @@
     requestAnimationFrame(animRing);
   }
   animRing();
+
+  const heroBgWord = document.getElementById('hero-bg-word');
+  const homeSection = document.getElementById('home');
+  let bgOffsetX = 0, bgOffsetY = 0;
+
+  document.addEventListener('mousemove', e => {
+    const rect = homeSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      bgOffsetX = (e.clientX - cx) / cx * 30;
+      bgOffsetY = (e.clientY - cy) / cy * 20;
+      heroBgWord.style.transform = `translate(calc(-50% + ${bgOffsetX}px), calc(-50% + ${bgOffsetY}px))`;
+      const brightness = 0.04 + Math.abs((e.clientY - cy) / cy) * 0.06;
+      heroBgWord.style.color = `rgba(255,255,255,${brightness})`;
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const rect = homeSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const parallax = scrollY * 0.25;
+      heroBgWord.style.transform = `translate(calc(-50% + ${bgOffsetX}px), calc(-50% + ${bgOffsetY - parallax}px))`;
+      const fade = Math.max(0.02, 0.1 - scrollY / window.innerHeight * 0.12);
+      heroBgWord.style.color = `rgba(255,255,255,${fade})`;
+    }
+  });
 
   const hoverables = document.querySelectorAll('a, button, .project-card, .stat-box, .timeline-item, .skill-tag, input, textarea');
   hoverables.forEach(el => {
