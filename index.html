@@ -8,8 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
+ 
+.thumb-card {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--gray);
+  cursor: none;
+}
+.thumb-card:hover .project-overlay { opacity: 1; }
+.thumb-card img { transition: transform 0.4s ease; }
+.thumb-card:hover img { transform: scale(1.05); }
   :root {
+   
     --red: #E8192C;
     --red-dark: #B5101E;
     --black: #0a0a0a;
@@ -543,6 +554,7 @@
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#thumbnails">Thumbnails</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -716,6 +728,40 @@
     </a>
 </section>
 
+<!-- THUMBNAILS -->
+<section id="thumbnails">
+  <p class="section-label">Thumbnail Design</p>
+  <h2 class="section-title">Sample Works</h2>
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 2rem;">
+
+    <div class="thumb-card">
+      <img src="Thumbnail_1.png" alt="Before and After Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <div class="project-overlay">Thumbnail Design &#8599;</div>
+    </div>
+
+    <div class="thumb-card">
+      <img src="Thumbnail_2.png" alt="Day 99 Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <div class="project-overlay">Thumbnail Design &#8599;</div>
+    </div>
+
+    <div class="thumb-card">
+      <img src="Thumbnail_3.png" alt="Something is Wrong Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <div class="project-overlay">Thumbnail Design &#8599;</div>
+    </div>
+
+    <div class="thumb-card">
+      <img src="Thumbnail_4.png" alt="Day 100 Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <div class="project-overlay">Thumbnail Design &#8599;</div>
+    </div>
+
+    <div class="thumb-card">
+      <img src="Thumbnail_5.png" alt="VS Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <div class="project-overlay">Thumbnail Design &#8599;</div>
+    </div>
+
+  </div>
+</section>     
+     
 <!-- EXPERIENCE -->
 <section id="experience">
   <p class="section-label">Career</p>
