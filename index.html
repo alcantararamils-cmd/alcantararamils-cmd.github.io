@@ -206,7 +206,62 @@
     animation: scrollAnim 2s ease infinite;
   }
   @keyframes scrollAnim { 0%{left:-100%} 100%{left:100%} }
-
+ 
+#channels { text-align: center; }
+.channels-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+.channel-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  cursor: none;
+}
+.channel-logo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.1);
+  background: var(--gray);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.channel-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.channel-card:hover .channel-logo {
+  border-color: var(--red);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(232,25,44,0.25);
+}
+.channel-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-align: center;
+  transition: color 0.3s;
+}
+.channel-card:hover .channel-name { color: var(--red); }
+.channel-niche {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.2);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  margin-top: -6px;
+}
   #about {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -556,6 +611,7 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#thumbnails">Thumbnails</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#channels">Channels</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -761,6 +817,55 @@
 
   </div>
 </section>     
+
+<!-- CHANNELS -->
+<section id="channels">
+  <p class="section-label">Portfolio</p>
+  <h2 class="section-title">Channels I Manage</h2>
+  <div class="channels-grid">
+
+    <a href="https://youtube.com/@seniortravelworld" target="_blank" rel="noopener noreferrer" class="channel-card">
+      <div class="channel-logo">
+        <img src="logo_seniortravelworld.jpg" alt="Senior Travel World">
+      </div>
+      <div class="channel-name">Senior Travel World</div>
+      <div class="channel-niche">Travel</div>
+    </a>
+
+    <a href="https://youtube.com/@intothedarkcrime" target="_blank" rel="noopener noreferrer" class="channel-card">
+      <div class="channel-logo">
+        <img src="logo_intothedarkcrime.jpg" alt="Into The Dark Crime">
+      </div>
+      <div class="channel-name">Into The Dark Crime</div>
+      <div class="channel-niche">True Crime</div>
+    </a>
+
+    <a href="https://youtube.com/@crime-discovery" target="_blank" rel="noopener noreferrer" class="channel-card">
+      <div class="channel-logo">
+        <img src="logo_crimediscovery.jpg" alt="Crime Discovery">
+      </div>
+      <div class="channel-name">Crime Discovery</div>
+      <div class="channel-niche">True Crime</div>
+    </a>
+
+    <a href="https://youtube.com/@officer-wilson" target="_blank" rel="noopener noreferrer" class="channel-card">
+      <div class="channel-logo">
+        <img src="logo_officerwilson.jpg" alt="Officer Wilson">
+      </div>
+      <div class="channel-name">Officer Wilson</div>
+      <div class="channel-niche">True Crime</div>
+    </a>
+
+    <a href="https://youtube.com/@prof.haggard4907" target="_blank" rel="noopener noreferrer" class="channel-card">
+      <div class="channel-logo">
+        <img src="logo_profhaggard.jpg" alt="Prof. Haggard">
+      </div>
+      <div class="channel-name">Prof. Haggard</div>
+      <div class="channel-niche">Education</div>
+    </a>
+
+  </div>
+</section>
      
 <!-- EXPERIENCE -->
 <section id="experience">
