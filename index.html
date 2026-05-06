@@ -8,19 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
- 
-.thumb-card {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: var(--gray);
-  cursor: none;
-}
-.thumb-card:hover .project-overlay { opacity: 1; }
-.thumb-card img { transition: transform 0.4s ease; }
-.thumb-card:hover img { transform: scale(1.05); }
+
   :root {
-   
     --red: #E8192C;
     --red-dark: #B5101E;
     --black: #0a0a0a;
@@ -86,9 +75,9 @@
     text-decoration: none;
   }
   .nav-logo span { color: var(--red); }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--muted);
@@ -206,62 +195,7 @@
     animation: scrollAnim 2s ease infinite;
   }
   @keyframes scrollAnim { 0%{left:-100%} 100%{left:100%} }
- 
-#channels { text-align: center; }
-.channels-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2.5rem;
-  margin-top: 3rem;
-}
-.channel-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-decoration: none;
-  cursor: none;
-}
-.channel-logo {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(255,255,255,0.1);
-  background: var(--gray);
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.channel-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.channel-card:hover .channel-logo {
-  border-color: var(--red);
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(232,25,44,0.25);
-}
-.channel-name {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 2px;
-  color: var(--muted);
-  text-transform: uppercase;
-  text-align: center;
-  transition: color 0.3s;
-}
-.channel-card:hover .channel-name { color: var(--red); }
-.channel-niche {
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.2);
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 1px;
-  margin-top: -6px;
-}
+
   #about {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -450,6 +384,72 @@
   .project-name { font-size: 1rem; font-weight: 500; color: var(--white); }
   .project-desc { font-size: 0.8rem; color: var(--muted); margin-top: 6px; line-height: 1.6; }
 
+  /* Thumbnails */
+  .thumb-card {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: var(--gray);
+    cursor: none;
+  }
+  .thumb-card:hover .project-overlay { opacity: 1; }
+  .thumb-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .thumb-card:hover img { transform: scale(1.05); }
+
+  /* Channels */
+  #channels { text-align: center; }
+  .channels-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  .channel-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    cursor: none;
+  }
+  .channel-logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.1);
+    background: var(--gray);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .channel-logo img { width: 100%; height: 100%; object-fit: cover; }
+  .channel-card:hover .channel-logo {
+    border-color: var(--red);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(232,25,44,0.25);
+  }
+  .channel-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.3s;
+  }
+  .channel-card:hover .channel-name { color: var(--red); }
+  .channel-niche {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.2);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+    margin-top: -6px;
+  }
+
+  /* Timeline */
   .timeline { margin-top: 3rem; position: relative; padding-left: 2rem; }
   .timeline::before {
     content: '';
@@ -510,6 +510,7 @@
     text-transform: uppercase;
   }
 
+  /* Contact */
   #contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -567,7 +568,6 @@
   }
   .social-link:hover { color: var(--red); }
   .social-link svg { width: 16px; height: 16px; flex-shrink: 0; }
-
   .contact-actions {
     display: flex;
     flex-direction: column;
@@ -589,7 +589,8 @@
 
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
+    .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .nav-links a { font-size: 0.65rem; }
     section { padding: 6rem 1.5rem 3rem; }
     #about, #contact { grid-template-columns: 1fr; gap: 3rem; }
     .about-stats { grid-template-columns: repeat(2, 1fr); }
@@ -610,8 +611,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#thumbnails">Thumbnails</a></li>
-    <li><a href="#experience">Experience</a></li>
     <li><a href="#channels">Channels</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -644,7 +645,9 @@
     <div class="about-avatar">
       <div class="avatar-ring"></div>
       <div class="avatar-ring2"></div>
-      <div class="about-avatar-inner">   <img src="profile.jpg" alt="Ramil S. Alcantara"> </div>
+      <div class="about-avatar-inner">
+        <img src="profile.jpg" alt="Ramil S. Alcantara">
+      </div>
     </div>
     <div class="available-badge">
       <div class="available-dot"></div>
@@ -664,7 +667,7 @@
         <div class="stat-label">Students led</div>
       </div>
       <div class="stat-box">
-        <div class="stat-num">3+</div>
+        <div class="stat-num">5</div>
         <div class="stat-label">Channels</div>
       </div>
     </div>
@@ -723,7 +726,7 @@
 
       <div class="project-card">
         <div class="project-img">
-          <img src="Keyword_ranking.jpg" alt="Automated Dashboard" style="width:100%; height:100%; object-fit:cover;">
+          <img src="Keyword_ranking.jpg" alt="Keyword Ranking Tracker" style="width:100%; height:100%; object-fit:cover;">
           <div class="project-overlay">View project &#8599;</div>
         </div>
         <div class="project-info">
@@ -747,7 +750,7 @@
 
       <div class="project-card">
         <div class="project-img">
-          <img src="AI Content Pipeline.jpg" alt="AI WORKFLOW" style="width:100%; height:100%; object-fit:cover;">
+          <div class="project-img-placeholder">AI CONTENT PIPELINE</div>
           <div class="project-overlay">View project &#8599;</div>
         </div>
         <div class="project-info">
@@ -759,19 +762,18 @@
 
       <div class="project-card">
         <div class="project-img">
-          <img src="LED Wall.jpg" alt="LED Wall vMix Production" style="width:100%; height:100%; object-fit:cover;">
+          <img src="LED_Wall.jpg" alt="LED Wall vMix Production" style="width:100%; height:100%; object-fit:cover;">
           <div class="project-overlay">View project &#8599;</div>
         </div>
         <div class="project-info">
           <div class="project-cat">Live Production</div>
-          <div class="project-name">LED Wall & vMix Production</div>
+          <div class="project-name">LED Wall &amp; vMix Production</div>
           <div class="project-desc">IT head for large-scale school events including graduation ceremonies — managing live visual production via vMix.</div>
         </div>
       </div>
 
-    <a href="https://www.youtube.com/@prof.haggard4907/featured" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:block; flex: 0 0 calc(33.333% - 16px);">
-      <div class="project-card">
-        <div class="project-img">
+      <a href="https://www.youtube.com/@prof.haggard4907/featured" target="_blank" rel="noopener noreferrer" style="text-decoration:none; display:flex; flex-direction:column; flex: 0 0 calc(33.333% - 16px); background:var(--gray); overflow:hidden; position:relative; cursor:none;">
+        <div class="project-img" style="width:100%; aspect-ratio:16/10; overflow:hidden; position:relative; flex-shrink:0;">
           <img src="Educational_vlog.jpg" alt="Educational Vlogging" style="width:100%; height:100%; object-fit:cover;">
           <div class="project-overlay">Visit channel &#8599;</div>
         </div>
@@ -780,8 +782,10 @@
           <div class="project-name">Educational Vlogging</div>
           <div class="project-desc">Creator since 2015 — storytelling, sound design, and audience retention from the perspective of an educator and creator.</div>
         </div>
-      </div>
-    </a>
+      </a>
+
+    </div>
+  </div>
 </section>
 
 <!-- THUMBNAILS -->
@@ -789,34 +793,28 @@
   <p class="section-label">Thumbnail Design</p>
   <h2 class="section-title">Sample Works</h2>
   <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 2rem;">
-
     <div class="thumb-card">
-      <img src="Thumbnail 1.png" alt="Before and After Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <img src="Thumbnail_1.png" alt="Before and After Thumbnail">
       <div class="project-overlay">Thumbnail Design &#8599;</div>
     </div>
-
     <div class="thumb-card">
-      <img src="Thumbnail 2.png" alt="Day 99 Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <img src="Thumbnail_2.png" alt="Day 99 Thumbnail">
       <div class="project-overlay">Thumbnail Design &#8599;</div>
     </div>
-
     <div class="thumb-card">
-      <img src="Thumbnail 3.png" alt="Something is Wrong Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <img src="Thumbnail_3.png" alt="Something is Wrong Thumbnail">
       <div class="project-overlay">Thumbnail Design &#8599;</div>
     </div>
-
     <div class="thumb-card">
-      <img src="Thumbnail 4.png" alt="Day 100 Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <img src="Thumbnail_4.png" alt="Day 100 Thumbnail">
       <div class="project-overlay">Thumbnail Design &#8599;</div>
     </div>
-
     <div class="thumb-card">
-      <img src="Thumbnail 5.png" alt="VS Thumbnail" style="width:100%; height:100%; object-fit:cover; display:block;">
+      <img src="Thumbnail_5.png" alt="VS Thumbnail">
       <div class="project-overlay">Thumbnail Design &#8599;</div>
     </div>
-
   </div>
-</section>     
+</section>
 
 <!-- CHANNELS -->
 <section id="channels">
@@ -866,7 +864,7 @@
 
   </div>
 </section>
-     
+
 <!-- EXPERIENCE -->
 <section id="experience">
   <p class="section-label">Career</p>
@@ -925,7 +923,7 @@
         <div class="timeline-year">2024 — Present</div>
       </div>
       <div class="timeline-company">Self-directed &nbsp;&#x2022;&nbsp; Independent Projects</div>
-      <p class="timeline-desc">Designed and built custom automation tools including keyword ranking dashboards, AI-integrated content pipelines, and web apps (Bitwize/StudyHub) to solve real bottlenecks in education and content production. Developed a "automation-first" mindset — if it can be scripted, it will be.</p>
+      <p class="timeline-desc">Designed and built custom automation tools including keyword ranking dashboards, AI-integrated content pipelines, and web apps (Bitwize/StudyHub) to solve real bottlenecks in education and content production. Developed an "automation-first" mindset — if it can be scripted, it will be.</p>
       <div class="timeline-tags">
         <span class="timeline-tag">Google Apps Script</span>
         <span class="timeline-tag">JavaScript</span>
@@ -1056,14 +1054,14 @@
     }
   });
 
-  const hoverables = document.querySelectorAll('a, button, .project-card, .stat-box, .timeline-item, .skill-tag, input, textarea');
+  const hoverables = document.querySelectorAll('a, button, .project-card, .stat-box, .timeline-item, .skill-tag, .thumb-card, .channel-card, input, textarea');
   hoverables.forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
     el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
   });
 
   const track = document.getElementById('projects-track');
-  const cards = track.querySelectorAll('.project-card');
+  const cards = track.children;
   let current = 0;
   const visible = () => window.innerWidth < 900 ? 1 : 3;
 
